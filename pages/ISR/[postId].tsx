@@ -1,12 +1,12 @@
-import Container from '@/components/Container';
+import Container from '@/components/common/Container';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 
-interface IISR {
+interface IISRPage {
   data: any;
 }
 
-const ISR: React.FC<IISR> = ({}) => {
+const ISRPage: React.FC<IISRPage> = ({}) => {
   const router = useRouter();
   const isFallback = router.isFallback;
   return (
@@ -16,7 +16,7 @@ const ISR: React.FC<IISR> = ({}) => {
   );
 };
 
-export default ISR;
+export default ISRPage;
 
 /**
  * ISR được sử dụng dựa vào các cách sau:
@@ -34,12 +34,11 @@ export default ISR;
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [{ params: { postId: '1' } }],
-    //
-    fallback: false,
+    fallback: true,
   };
 };
 
-export const getStaticProps: GetStaticProps<IISR> = async (
+export const getStaticProps: GetStaticProps<IISRPage> = async (
   context: GetStaticPropsContext
 ) => {
   const postId = context.params?.postId;

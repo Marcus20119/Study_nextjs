@@ -1,10 +1,10 @@
-import Container from '@/components/Container';
+import Container from '@/components/common/Container';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 
-interface IPost {
+interface IPostPage {
   post: any;
 }
-export default function Post({ post }: IPost) {
+export default function PostPage({ post }: IPostPage) {
   console.log('post:', post);
   return (
     <Container label="POST PAGE">
@@ -37,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 // Chỉ chạy phía server, với mỗi phần tử của paths phía trên thì sẽ chạy 1 lần tương ứng
-export const getStaticProps: GetStaticProps<IPost> = async (
+export const getStaticProps: GetStaticProps<IPostPage> = async (
   context: GetStaticPropsContext
 ) => {
   // server-side - build-time

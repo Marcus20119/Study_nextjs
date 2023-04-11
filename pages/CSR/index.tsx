@@ -1,10 +1,10 @@
-import BackButton from '@/components/BackButton';
-import ButtonWrap from '@/components/ButtonWrap';
+import BackButton from '@/components/common/BackButton';
+import ButtonWrap from '@/components/common/ButtonWrap';
 import Link from 'next/link';
 
-interface ICSR {}
+interface ICSRPage {}
 
-const CSR: React.FC<ICSR> = ({}) => {
+const CSRPage: React.FC<ICSRPage> = ({}) => {
   const tabsData: {
     path: string;
     name: string;
@@ -40,4 +40,4 @@ const CSR: React.FC<ICSR> = ({}) => {
   );
 };
 
-export default CSR;
+export default CSRPage;

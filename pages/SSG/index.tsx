@@ -1,13 +1,13 @@
-import Container from '@/components/Container';
+import Container from '@/components/common/Container';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-interface IPosts {
+interface IPostsPage {
   posts: any[];
 }
 
-export default function Posts({ posts }: IPosts) {
+export default function PostsPage({ posts }: IPostsPage) {
   return (
     <Container label="STATIC SITE GENERATION PAGE">
       <ul className="flex flex-col gap-2">
@@ -22,7 +22,7 @@ export default function Posts({ posts }: IPosts) {
 }
 
 // Chỉ chạy phía server, dùng để gọi api và trả về dữ liệu
-export const getStaticProps: GetStaticProps<IPosts> = async (
+export const getStaticProps: GetStaticProps<IPostsPage> = async (
   context: GetStaticPropsContext
 ) => {
   const response = await fetch(

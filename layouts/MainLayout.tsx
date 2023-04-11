@@ -1,8 +1,6 @@
-interface IMainLayout {
-  children: React.ReactNode;
-}
+import { LayoutProps } from '@/pages/_app';
 
-const MainLayout: React.FC<IMainLayout> = ({ children }) => {
+const MainLayout = ({ children }: LayoutProps) => {
   return <div className="main-layout">{children}</div>;
 };
 

@@ -1,12 +1,12 @@
-import Container from '@/components/Container';
-import MainButton from '@/components/MainButton';
+import Container from '@/components/common/Container';
+import MainButton from '@/components/common/MainButton';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-interface ICSRWithQuery {}
+interface ICSRWithQueryPage {}
 
-const CSRWithQuery: React.FC<ICSRWithQuery> = ({}) => {
+const CSRWithQueryPage: React.FC<ICSRWithQueryPage> = ({}) => {
   const router = useRouter();
   const [dataFromClient, setDataFromClient] = useState<any[]>([]);
   console.log('dataFromClient:', dataFromClient);
@@ -44,7 +44,7 @@ const CSRWithQuery: React.FC<ICSRWithQuery> = ({}) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<ICSRWithQuery> = async (
+export const getStaticProps: GetStaticProps<ICSRWithQueryPage> = async (
   context: GetStaticPropsContext
 ) => {
   console.log('-----GET STATIC PROPS-----');
@@ -53,4 +53,4 @@ export const getStaticProps: GetStaticProps<ICSRWithQuery> = async (
   };
 };
 
-export default CSRWithQuery;
+export default CSRWithQueryPage;

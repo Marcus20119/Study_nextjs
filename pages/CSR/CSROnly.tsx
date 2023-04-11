@@ -1,14 +1,14 @@
-import Container from '@/components/Container';
+import Container from '@/components/common/Container';
 import dynamic from 'next/dynamic';
 
 const DynamicComponentWithNoSSR = dynamic(
-  () => import('@/components/TestComponent'),
+  () => import('@/components/common/TestComponent'),
   { ssr: false }
 );
 
-interface ICSROnly {}
+interface ICSROnlyPage {}
 
-const CSROnly: React.FC<ICSROnly> = ({}) => {
+const CSROnlyPage: React.FC<ICSROnlyPage> = ({}) => {
   return (
     <Container label="Client Side Rendering Only">
       <DynamicComponentWithNoSSR text="This Component will render from client site only" />
@@ -16,4 +16,4 @@ const CSROnly: React.FC<ICSROnly> = ({}) => {
   );
 };
 
-export default CSROnly;
+export default CSROnlyPage;

@@ -1,10 +1,11 @@
-import Container from '@/components/Container';
-import TestComponent from '@/components/TestComponent';
+import Container from '@/components/common/Container';
+import TestComponent from '@/components/common/TestComponent';
 import MainLayout from '@/layouts/MainLayout';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '../_app';
 
-const LayoutExample: NextPageWithLayout = ({}) => {
+// Hình như bỏ interface vào nó không chạy
+const LayoutExamplePage: NextPageWithLayout = ({}) => {
   return (
     <Container label="Layout Example">
       <TestComponent text="This Page has Main Layout" />
@@ -12,8 +13,6 @@ const LayoutExample: NextPageWithLayout = ({}) => {
   );
 };
 
-LayoutExample.getLayout = function getLayout(page: ReactElement) {
-  return <MainLayout>{page}</MainLayout>;
-};
+LayoutExamplePage.Layout = MainLayout;
 
-export default LayoutExample;
+export default LayoutExamplePage;

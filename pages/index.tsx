@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 import { useResponsive } from '@/hooks';
-import ButtonWrap from '@/components/ButtonWrap';
+import ButtonWrap from '@/components/common/ButtonWrap';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,12 +26,28 @@ export default function Home() {
       name: 'SSR',
     },
     {
-      path: '/ISR',
+      path: '/ISR/1',
       name: 'ISR',
     },
     {
       path: '/LayoutExample',
       name: 'Layout',
+    },
+    {
+      path: '/loginOrigin',
+      name: 'API',
+    },
+    {
+      path: '/SWR',
+      name: 'SWR',
+    },
+    {
+      path: '/loginUseAuthC3',
+      name: 'useAuth',
+    },
+    {
+      path: '/ProtectedRoute',
+      name: 'Protected Route',
     },
   ];
   return (

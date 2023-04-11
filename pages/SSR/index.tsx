@@ -1,18 +1,22 @@
-import Container from "@/components/Container";
+import Container from '@/components/common/Container';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 
-interface ISSR {
+interface ISSRPage {
   data: any;
 }
 
-const SSR: React.FC<ISSR> = ({ data }) => {
-  return <Container label="Server Side Rendering"><></></Container>;
+const SSRPage: React.FC<ISSRPage> = ({ data }) => {
+  return (
+    <Container label="Server Side Rendering">
+      <></>
+    </Container>
+  );
 };
 
-export default SSR;
+export default SSRPage;
 
 // Chỉ có Mode Production trên server thật mới thấy sự khác biệt
-export const getServerSideProps: GetServerSideProps<ISSR> = async (
+export const getServerSideProps: GetServerSideProps<ISSRPage> = async (
   context: GetServerSidePropsContext
 ) => {
   /**

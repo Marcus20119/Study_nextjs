@@ -1,13 +1,13 @@
-import Container from '@/components/Container';
-import TestComponent from '@/components/TestComponent';
+import Container from '@/components/common/Container';
+import TestComponent from '@/components/common/TestComponent';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
 import { useEffect, useState } from 'react';
 
-interface ICSRWithData {
+interface ICSRWithDataPage {
   dataFromServer: any[];
 }
 
-const CSRWithData: React.FC<ICSRWithData> = ({ dataFromServer }) => {
+const CSRWithDataPage: React.FC<ICSRWithDataPage> = ({ dataFromServer }) => {
   console.log('dataFromServer:', dataFromServer);
   const [dataFromClient, setDataFromClient] = useState<any[]>([]);
   console.log('dataFromClient:', dataFromClient);
@@ -27,7 +27,7 @@ const CSRWithData: React.FC<ICSRWithData> = ({ dataFromServer }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<ICSRWithData> = async (
+export const getStaticProps: GetStaticProps<ICSRWithDataPage> = async (
   context: GetStaticPropsContext
 ) => {
   console.log('-----GET STATIC PROPS-----');
@@ -45,4 +45,4 @@ export const getStaticProps: GetStaticProps<ICSRWithData> = async (
   };
 };
 
-export default CSRWithData;
+export default CSRWithDataPage;

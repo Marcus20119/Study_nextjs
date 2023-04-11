@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import httpProxy from 'http-proxy';
+import Cookies from 'cookies';
 
 // type Data = {
 //   name: string;
@@ -12,16 +13,26 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  // Vì đã để token bên trong header nên không cần gửi cookie lên server nữa
-  req.headers.cookie = '';
+  return new Promise(async resolve => {
+    const cookies = new Cookies(req, res);
+    const accessToken = cookies.get('access_token');
+    console.log('accessToken:', accessToken);
+    if (accessToken) {
+      req.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    // Không gửi cookie lên server
+    req.headers.cookie = '';
 
-  proxy.web(req, res, {
-    target: process.env.API_URL,
-    changeOrigin: true, // Đổi localhost:3000 thành target phía trên
-    selfHandleResponse: false, // Nếu set = true thì proxy sẽ xử lý response trước khi trả về cho client, còn set = false thì trả về thẳng
+    proxy.web(req, res, {
+      target: process.env.API_URL,
+      changeOrigin: true, // Đổi localhost => target
+      selfHandleResponse: false, // Ko Xử lý response mà trả về thẳng client
+    });
+
+    proxy.once('proxyRes', () => {
+      resolve(true);
+    });
   });
-
-  // res.status(200).json({ name: 'John Doe' });
 }
 
 export const config = {
