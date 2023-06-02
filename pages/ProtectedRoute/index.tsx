@@ -1,8 +1,8 @@
+import { useRouter } from 'next/router';
 import Container from '@/components/common/Container';
 import MainButton from '@/components/common/MainButton';
 import { useAuth } from '@/hooks/useAuthC3';
 import ProtectedLayout from '@/layouts/ProtectedLayout';
-import { useRouter } from 'next/router';
 import { NextPageWithLayout } from '../_app';
 
 const ProtectedPage: NextPageWithLayout = ({}) => {

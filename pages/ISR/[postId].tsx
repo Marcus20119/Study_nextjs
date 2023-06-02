@@ -26,7 +26,7 @@ export default ISRPage;
  *   Sau 60s này, request đầu tiên gửi lên sẽ được server trả về file html cũ và âm thầm chạy hàm 'getStaticProps' để render ra file HTML mới để thay thế cho file cũ trong cache của CDN
  *   Những request tiếp theo sẽ được server trả về file HTML mới này và tiếp tục bắt đầu chu trình 60 mới
  *
- * - Tùy biến giá trị của thuộc tính 'fallback' của hàm 'getStaticPaths'. Vì khi sử dụng ISR, ta không render sẵn tất cả các file HTML và lưu vào cache của CDn mà chỉ render ra những file thực sự cần thiết. Nên khi có request gửi lên để lấy những file chưa được render, server sẽ phải chạy hàm 'getStaticPaths' để render ra file mà người dùng cần. Lúc đó thuộc tính 'fallback' sẽ giúp ta có những hướng giải quyết khác nhau:
+ * - Tùy biến giá trị của thuộc tính 'fallback' của hàm 'getStaticPaths'. Vì khi sử dụng ISR, ta không render sẵn tất cả các file HTML và lưu vào cache của CDN mà chỉ render ra những file thực sự cần thiết. Nên khi có request gửi lên để lấy những file chưa được render, server sẽ phải chạy hàm 'getStaticPaths' để render ra file mà người dùng cần. Lúc đó thuộc tính 'fallback' sẽ giúp ta có những hướng giải quyết khác nhau:
  *    + false: Trả về trang Not Found, khi server render xong trang cần thiết thì phía client reload lại web thì mới hiển thị nội dung
  *    + 'blocking': Client sẽ bị đứng lại (Hiện loading xoay xoay trên tab). Khi server render xong sẽ hiển thị nội dung
  *    + true: bắt được loading thông qua thuộc tính router.isFallback, ta có thể lấy thuộc tính này để custom loading riêng cho trang web

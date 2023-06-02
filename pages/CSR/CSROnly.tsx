@@ -1,6 +1,7 @@
 import Container from '@/components/common/Container';
 import dynamic from 'next/dynamic';
 
+// Có thể chỉ định 1 components nào đó render theo 1 cách nhất định
 const DynamicComponentWithNoSSR = dynamic(
   () => import('@/components/common/TestComponent'),
   { ssr: false }
